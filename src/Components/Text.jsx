@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Draggable from 'react-draggable';
 import '../App.css';
 
-const Text = ({ initialText, color }) => {
+const Text = ({ initialText = "Double click to edit", color }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [value, setValue] = useState(initialText || "Double click to edit");
+    const [value, setValue] = useState(initialText);
+    const textRef = React.useRef(null);
 
     const handleDoubleClick = () => {
         setIsEditing(true);
@@ -30,11 +31,18 @@ const Text = ({ initialText, color }) => {
         setIsEditing(true);
     };
 
+    useEffect(() => {
+        if (isEditing && textRef.current) {
+            textRef.current.focus();
+        }
+    }, [isEditing]);
+
     return (
         <Draggable>
             <div onDoubleClick={handleDoubleClick} onTouchEnd={handleTouchEnd}>
                 {isEditing ? (
                     <textarea
+                        ref={textRef}
                         value={value}
                         onChange={handleChange}
                         onKeyDown={handleKeyDown}

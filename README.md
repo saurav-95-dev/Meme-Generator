@@ -5,7 +5,7 @@
 
 -> Utilised hooks namely useState , useEffect , createRefs , useSearchParams etc .
 
--> Utilized react draggable library to drag and moce the meme-text.
+-> Utilized react draggable library to drag and move the meme-text.
 
 -> Used API : https://api.imgflip.com/get_memes , to fetch meme-cards data .
 

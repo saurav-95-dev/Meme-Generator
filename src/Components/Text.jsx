@@ -1,15 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Draggable from 'react-draggable';
-import PropTypes from 'prop-types';
 import '../App.css';
 
 const Text = ({ initialText, color }) => {
-    const [editMode, setEditMode] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     const [value, setValue] = useState(initialText || "Double click to edit");
-    const textRef = useRef(null);
 
     const handleDoubleClick = () => {
-        setEditMode(true);
+        setIsEditing(true);
     };
 
     const handleChange = (e) => {
@@ -17,58 +15,39 @@ const Text = ({ initialText, color }) => {
     };
 
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            setValue(prevValue => prevValue + '\n');
+            setIsEditing(false);
         }
     };
 
     const handleBlur = () => {
-        if (value.trim() === "") {
-            setValue(initialText || "Double click to edit");
-        }
-        setEditMode(false);
+        setIsEditing(false);
     };
 
-    const handleMouseUp = () => {
-        const selection = window.getSelection();
-        const selectedText = selection.toString();
-        if (!selectedText) return;
-        const newValue = value.replace(selectedText, '');
-        setValue(newValue);
+    const handleTouchEnd = (e) => {
+        e.preventDefault();
+        setIsEditing(true);
     };
 
     return (
         <Draggable>
-            {
-                editMode ? (
+            <div onDoubleClick={handleDoubleClick} onTouchEnd={handleTouchEnd}>
+                {isEditing ? (
                     <textarea
-                        ref={textRef}
-                        autoFocus
                         value={value}
                         onChange={handleChange}
-                        onBlur={handleBlur}
                         onKeyDown={handleKeyDown}
-                        onMouseUp={handleMouseUp}
-                        style={{ color: color || '#000000' }}
+                        onBlur={handleBlur}
+                        autoFocus
+                        style={{ color: color || '#000000', width: '100%', background: 'none', border: 'none', resize: 'none' }}
                     />
                 ) : (
-                    <h1
-                        ref={textRef}
-                        onDoubleClick={handleDoubleClick}
-                        style={{ color: color || '#000000' }}
-                    >
-                        {value}
-                    </h1>
-                )
-            }
+                    <h1 style={{ color: color || '#000000' }}>{value}</h1>
+                )}
+            </div>
         </Draggable>
     );
-}
-
-Text.propTypes = {
-    initialText: PropTypes.string,
-    color: PropTypes.string
 };
 
 export default Text;

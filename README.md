@@ -1,3 +1,4 @@
+<img width="749" alt="Screenshot 2024-08-20 at 11 28 29 AM" src="https://github.com/user-attachments/assets/94e18034-8bb4-43b5-8a28-d656837f0935">
 # Meme-Generator
 
 
@@ -16,3 +17,6 @@
 -> Implemented a color selector button to change the text-color.
 
 -> Live-site : https://saurav-generate-meme.netlify.app/
+
+Design anad UI preview :
+<img width="749" alt="Screenshot 2024-08-20 at 11 28 29 AM" src="https://github.com/user-attachments/assets/94e18034-8bb4-43b5-8a28-d656837f0935">

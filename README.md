@@ -25,7 +25,7 @@ Build a multipage meme-generator react application using react routing
 
 
 #### TECHNOLOGIES :
-HTML , CSS , Javascript
+HTML , CSS , Javascript , React
 
 #### CONCEPTS AND BEST PRACTICES :
 Promises , API Calling , DOM Manipulation , gettingCurrentLocation .

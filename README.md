@@ -28,10 +28,13 @@ Build a multipage meme-generator react application using react routing
 HTML , CSS , Javascript , React
 
 #### CONCEPTS AND BEST PRACTICES :
-Promises , API Calling , DOM Manipulation , gettingCurrentLocation .
+
 
 #### USAGE :
+
 #### LICENSE :
+
 #### CONTACT :
 You can reach out to me at -> devsaurabh086@gmail.com
+
 #### TRY IT --> https://saurav-generate-meme.netlify.app/
